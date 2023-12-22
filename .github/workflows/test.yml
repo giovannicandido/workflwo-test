@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo bah
-      - run: echo {{ github.event.event_name }}
+      - run: echo ${{ github.event.event_name }}
   test-2:
-    if: (github.event.pull_request.merged == true && github.event.event_name == 'pull_request') || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event.pull_request_target.merged == true || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - run: echo buuu
