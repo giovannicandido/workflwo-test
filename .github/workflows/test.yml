@@ -1,0 +1,22 @@
+name: Test Release
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
+  workflow_dispatch:
+jobs:
+  test-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo bah
+      - run: echo {{ github.event.event_name }}
+  test-2:
+    if: (github.event.pull_request.merged == true && github.event.event_name == 'pull_request') || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo buuu
