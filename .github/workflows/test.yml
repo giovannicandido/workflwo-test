@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo bah
-      - run: echo "${{ github.event.event_name }}""
+      - run: echo "${{ github.event }}"
   test-2:
     needs: test-1
     runs-on: ubuntu-latest
