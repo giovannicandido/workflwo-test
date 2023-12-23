@@ -1,0 +1,12 @@
+name: PR Build
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+jobs:
+  test-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo bah
+      - run: echo ${{ github.event.event_name }}
